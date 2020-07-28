@@ -1,0 +1,29 @@
+<app-data-filter (filterValueChanged)="onFilterValueChanged($event)"></app-data-filter>
+<div class="row">
+  <div class="col-sm-12 col-md-12 col-lg-12">
+    <div class="card x no-radius">
+      <div class="card-header">
+        <ul class="list-inline mb-0">
+          <li class="list-inline-item">
+            <span>Page Limit : </span>
+          </li>
+          <li class="list-inline-item col-sm-1 col-md-1 col-lg-1">
+            <select (change)="onSelectChange($event)" [(ngModel)]="itemPerPage" name="page-limits" id="page-limits"
+              class="form-control ">
+              <option *ngFor="let limit of limitOptions" [value]="limit">{{limit}}</option>
+            </select>
+          </li>
+          <li class="list-inline-item pull-right">
+            <app-data-paginator *ngIf="data.length>0" (pageChanged)="onPageChange($event)" (numPages)="onNumPages"
+              [totalItems]="data.length" [itemPerPage]="itemPerPage"></app-data-paginator>
+          </li>
+        </ul>
+      </div>
+      <div class="card-body p-2">
+        <app-data-grid [height]='450'
+          [data]='data | dataFilter:searchTerm:prop  | slice: (page-1) * itemPerPage : (page-1) * itemPerPage + itemPerPage'
+          [dataColumnDefs]="dataColumnDefs"></app-data-grid>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<span class="pr-1">Page {{page}} of {{totalPages}}</span>
+<div class="btn-group mr-2">
+  <button type="button" class="btn btn-dark" [disabled]="noPrevious()" (click)="selectPage(1)">
+    <span class="fa fa-angle-double-left" aria-hidden="true"></span>
+  </button>
+  <button type="button" class="btn btn-dark" [disabled]="noPrevious()" (click)="selectPage(page-1)">
+    <span class="fa fa-angle-left" aria-hidden="true"></span>
+  </button>
+  <button type="button" class="btn btn-dark" [disabled]="noNext()" (click)="selectPage(page+1)">
+    <span class="fa fa-angle-right" aria-hidden="true"></span>
+  </button>
+  <button type="button" class="btn btn-dark" [disabled]="noNext()" (click)="selectPage(totalPages)">
+    <span class="fa fa-angle-double-right" aria-hidden="true"></span>
+  </button>
+</div>

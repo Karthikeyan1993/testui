@@ -1,0 +1,26 @@
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th (click)="doOrder(col.prop)" *ngFor="let col of dataColumnDefs" [ngStyle]="{'width.%':col.width}">
+          <span>{{col.displayName}}</span>
+          <span *ngIf="col.prop!=''" [ngClass]="getClass(col.prop)" class="pl-2 fa sort-icon"></span>
+        </th>
+      </tr>
+    </thead>
+  </table>
+</div>
+<!-- [ngStyle]="{'min-height.px':height,'max-height.px':height}" -->
+<div class="table-responsive" style="min-height: calc(100vh - 320px);max-height: calc(100vh - 320px);">
+  <table class="table table-hover">
+    <tbody>
+      <tr *ngFor="let item of data | dataSort:orderBy:prop; let i = index;">
+        <td *ngFor="let col of dataColumnDefs" [ngStyle]="{'width.%':col.width}">
+          <span class="table-data">
+            {{item[col.prop]}}
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

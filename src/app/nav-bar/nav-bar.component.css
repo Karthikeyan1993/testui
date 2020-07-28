@@ -1,0 +1,15 @@
+.bd-navbar {
+  min-height: 4rem;
+  box-sizing: border-box;
+  background-color: #673ab7;
+  color: #fafafa;
+}
+
+.navbar a {
+  color: #fafafa;
+}
+
+.navbar .fa-icons {
+  font-size: 24px;
+  color: #fafafa;
+}
